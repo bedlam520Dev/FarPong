@@ -150,11 +150,15 @@
     },
     "onlyBuiltDependencies": [
       "@reown/appkit",
-      "msw"
+      "bufferutil",
+      "msw",
+      "sharp",
+      "unrs-resolver",
+      "utf-8-validate"
     ]
   },
   "engines": {
-    "node": "25.x"
+    "node": "22.x"
   },
   "packageManager": "pnpm@10.23.0"
 }
