@@ -155,7 +155,7 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
               className="rounded-xl logo-shadow-blur logo-shadow-spread logo-shadow-opacity logo-shadow-color"
               priority
             />
-            <p className="font-arcade text-[clamp(0.55rem,1.5vw,0.8rem)] text-white/70">
+            <p className="font-arcade text-[clamp(0.5rem,1.2vw,0.8rem)] text-white/70">
               Retro Nostalgia Farcaster MiniApp
             </p>
           </header>
@@ -201,14 +201,14 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
             </div>
           </div>
 
-          <section
-            className="mt-2 flex w-full flex-col items-center rounded-xl border border-white/5 bg-white/5 px-3 py-3 text-[0.7rem] text-white/70"
+        <section
+            className="mt-2 flex w-full flex-col items-center rounded-xl border border-white/5 bg-white/5 px-3 py-3 text-[clamp(0.6rem,1.2vw,0.8rem)] text-white/70"
             style={{ maxHeight: 'min(320px, 45vh)' }}
           >
-            <h3 className="mb-1 flex items-center justify-center gap-2 text-[0.9rem] font-semibold uppercase tracking-[0.2em] text-white/80">
+            <h3 className="mb-1 flex items-center justify-center gap-2 text-[clamp(0.7rem,1.5vw,1rem)] font-semibold uppercase tracking-[0.2em] text-white/80">
               <span>🎮</span> How To Play
             </h3>
-            <ul className="space-y-1.25 text-[0.75rem] overflow-y-auto">
+            <ul className="space-y-1.25 text-[clamp(0.55rem,1vw,0.8rem)] overflow-y-auto">
               <li>Sign in with Farcaster/Base or jump in as guest.</li>
               <li>Pick your side (Farcaster left / Base right).</li>
               <li>Survive to 100 points — AI wins after 10.</li>

@@ -796,7 +796,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
   return (
     <div className="relative flex min-h-dvh w-full flex-col items-center gap-4 overflow-hidden bg-linear-to-br from-black via-gray-900 to-black px-4 pb-6 pt-10">
       <div className="relative text-center">
-        <h1 className="relative font-arcade text-center mb-5 bg-linear-to-r from-gradient-brand-start via-gradient-brand-mid to-gradient-brand-end bg-clip-text text-5xl font-bold text-transparent sm:text-4xl">
+        <h1 className="relative font-arcade text-center mb-5 bg-linear-to-r from-gradient-brand-start via-gradient-brand-mid to-gradient-brand-end bg-clip-text text-[clamp(2.5rem,5vw,4rem)] font-bold text-transparent">
           FARPONG
         </h1>
         {user && (
@@ -809,7 +809,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
           </p>
         )}
         {!gameState.gameStarted && (
-          <p className="relative font-arcade text-center text-xs mt-3 mb-5">
+          <p className="relative font-arcade text-center text-[clamp(0.5rem,1.2vw,0.8rem)] mt-3 mb-5">
             Choose your side to begin!
           </p>
         )}
@@ -824,8 +824,8 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
             <div className="relative m-auto flex items-center gap-3">
               <Image src="/far-square.svg" alt="Farcaster score" width={32} height={32} />
               <div>
-                <p
-                  className={`font-arcade text-2xl font-bold ${
+                  <p
+                  className={`font-arcade text-[clamp(1.5rem,3vw,2.2rem)] font-bold ${
                     gameState.playerSide === 'left' ? 'text-white' : 'text-white/70'
                   }`}
                   style={
@@ -842,7 +842,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
             <div className="relative m-auto flex items-center gap-3">
               <div className="text-right">
                 <p
-                  className={`font-arcade text-2xl font-bold ${
+                  className={`font-arcade text-[clamp(1.5rem,3vw,2.2rem)] font-bold ${
                     gameState.playerSide === 'right' ? 'text-white' : 'text-white/70'
                   }`}
                   style={
@@ -858,7 +858,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
             </div>
           </div>
 
-          <div className="relative text-center font-arcade text-[0.55rem] uppercase tracking-[0.3em] text-white/50">
+          <div className="relative text-center font-arcade text-[clamp(0.4rem,1vw,0.6rem)] uppercase tracking-[0.3em] text-white/50">
             · Survive to 100 · AI wins at 10 ·
           </div>
 
