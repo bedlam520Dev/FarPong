@@ -22,13 +22,7 @@ export const revalidate = 300;
 
 export function generateMetadata(): Metadata {
   return {
-    metadataBase: new URL('http://localhost:3000'),
-    alternates: {
-      canonical: '/',
-      languages: {
-        'en-US': '/en-US',
-      },
-    },
+    metadataBase: new URL('https://farpong.vercel.app'),
     title: METADATA.name,
     openGraph: {
       title: METADATA.name,

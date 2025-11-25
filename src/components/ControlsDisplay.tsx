@@ -26,8 +26,11 @@ export function ControlsDisplay({ isMobile }: ControlsDisplayProps): JSX.Element
           onClick={() => setShowControls(false)}
         >
           <div
-            className="w-full max-w-md rounded-2xl border-2 border-[oklch(0.66 0.12 219.97 / 1)]/50 bg-[oklch(0.11 0.03 291.33 / 1)]/95 p-6"
-            style={{ boxShadow: '0px 0px 18px 6px oklch(0.62 0.12 230.75 / 0.75)' }}
+            className="w-full max-w-md overflow-hidden rounded-2xl border-2 border-[oklch(0.66 0.12 219.97 / 1)]/50 bg-[oklch(0.11 0.03 291.33 / 1)]/95 p-6"
+            style={{
+              boxShadow: '0px 0px 18px 6px oklch(0.62 0.12 230.75 / 0.75)',
+              maxHeight: 'calc(100dvh - 2rem)',
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-4 flex items-center justify-between">
@@ -39,7 +42,7 @@ export function ControlsDisplay({ isMobile }: ControlsDisplayProps): JSX.Element
               />
             </div>
 
-            <div className="space-y-5 text-sm text-white/80">
+            <div className="space-y-5 overflow-y-auto text-sm text-white/80">
               <div>
                 <p className="mb-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/40">
                   Keyboard

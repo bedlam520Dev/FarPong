@@ -794,8 +794,8 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
   ]);
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-linear-to-br from-black via-gray-900 to-black py-2 px-4">
-      <div className="relative text-left">
+    <div className="relative flex min-h-dvh w-full flex-col items-center gap-4 overflow-hidden bg-linear-to-br from-black via-gray-900 to-black px-4 pb-6 pt-10">
+      <div className="relative text-center">
         <h1 className="relative font-arcade text-center mb-5 bg-linear-to-r from-gradient-brand-start via-gradient-brand-mid to-gradient-brand-end bg-clip-text text-5xl font-bold text-transparent sm:text-4xl">
           FARPONG
         </h1>
@@ -815,67 +815,74 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
         )}
       </div>
 
-      <div className="relative flex flex-col my-3 w-full h-auto space-y-3">
-        <div
-          className="relative flex flex-row rounded-[18px] border bg-black/40 py-2 h-auto w-90 mx-auto justify-self-center gap-5"
-          style={{ borderColor: PANEL_BORDER, boxShadow: PANEL_GLOW }}
-        >
-          <div className="relative flex justify-items-start align-middle m-auto gap-3">
-            <Image src="/far-square.svg" alt="Farcaster score" width={32} height={32} />
-            <div>
-              <p
-                className={`font-arcade text-2xl font-bold m-auto ${
-                  gameState.playerSide === 'left' ? 'text-white' : 'text-white/70'
-                }`}
-                style={
-                  gameState.playerSide === 'left'
-                    ? { textShadow: '0px 0px 14px oklch(0.62 0.12 230.75 / 0.80)' }
-                    : undefined
-                }
-              >
-                {formatScore(gameState.leftPaddle.score)}
-              </p>
-            </div>
-          </div>
-
-          <div className="relative flex justify-items-end gap-3 align-middle justify-end m-auto">
-            <div className="relative text-right">
-              <p
-                className={`font-arcade text-2xl font-bold m-auto ${
-                  gameState.playerSide === 'right' ? 'text-white' : 'text-white/70'
-                }`}
-                style={
-                  gameState.playerSide === 'right'
-                    ? { textShadow: '0px 0px 14px oklch(0.62 0.12 230.75 / 0.80)' }
-                    : undefined
-                }
-              >
-                {formatScore(gameState.rightPaddle.score)}
-              </p>
-            </div>
-            <Image src="/base-square.svg" alt="Base score" width={32} height={32} />
-          </div>
-        </div>
-
-        <div className="relative flex font-arcade text-center text-[0.55rem] uppercase tracking-[0.3em] text-white/50">
-          · Survive to 100 · AI wins at 10 ·
-        </div>
-
-        <div
-          className="rounded-[18px] border bg-black/70"
-          style={{ borderColor: PANEL_BORDER, boxShadow: PANEL_GLOW }}
-        >
-          <canvas
-            ref={canvasRef}
-            width={CANVAS_WIDTH}
-            height={CANVAS_HEIGHT}
-            onClick={handleCanvasClick}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            className="aspect-4/3 h-auto max-h-[70vh] w-full touch-none cursor-pointer rounded-[18px] border bg-black"
+      <div className="flex w-full flex-1 items-center justify-center">
+        <div className="relative w-full max-w-4xl space-y-3">
+          <div
+            className="relative mx-auto flex h-auto w-full flex-row justify-center gap-5 rounded-[18px] border bg-black/40 py-2"
             style={{ borderColor: PANEL_BORDER, boxShadow: PANEL_GLOW }}
-          />
+          >
+            <div className="relative m-auto flex items-center gap-3">
+              <Image src="/far-square.svg" alt="Farcaster score" width={32} height={32} />
+              <div>
+                <p
+                  className={`font-arcade text-2xl font-bold ${
+                    gameState.playerSide === 'left' ? 'text-white' : 'text-white/70'
+                  }`}
+                  style={
+                    gameState.playerSide === 'left'
+                      ? { textShadow: '0px 0px 14px oklch(0.62 0.12 230.75 / 0.80)' }
+                      : undefined
+                  }
+                >
+                  {formatScore(gameState.leftPaddle.score)}
+                </p>
+              </div>
+            </div>
+
+            <div className="relative m-auto flex items-center gap-3">
+              <div className="text-right">
+                <p
+                  className={`font-arcade text-2xl font-bold ${
+                    gameState.playerSide === 'right' ? 'text-white' : 'text-white/70'
+                  }`}
+                  style={
+                    gameState.playerSide === 'right'
+                      ? { textShadow: '0px 0px 14px oklch(0.62 0.12 230.75 / 0.80)' }
+                      : undefined
+                  }
+                >
+                  {formatScore(gameState.rightPaddle.score)}
+                </p>
+              </div>
+              <Image src="/base-square.svg" alt="Base score" width={32} height={32} />
+            </div>
+          </div>
+
+          <div className="relative text-center font-arcade text-[0.55rem] uppercase tracking-[0.3em] text-white/50">
+            · Survive to 100 · AI wins at 10 ·
+          </div>
+
+          <div
+            className="rounded-[18px] border bg-black/70"
+            style={{ borderColor: PANEL_BORDER, boxShadow: PANEL_GLOW }}
+          >
+            <canvas
+              ref={canvasRef}
+              width={CANVAS_WIDTH}
+              height={CANVAS_HEIGHT}
+              onClick={handleCanvasClick}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              className="h-full w-full touch-none cursor-pointer rounded-[18px] border bg-black"
+              style={{
+                borderColor: PANEL_BORDER,
+                boxShadow: PANEL_GLOW,
+                aspectRatio: `${CANVAS_WIDTH}/${CANVAS_HEIGHT}`,
+                maxHeight: 'min(560px, calc(100dvh - 260px))',
+              }}
+            />
+          </div>
         </div>
       </div>
 

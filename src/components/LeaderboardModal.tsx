@@ -57,7 +57,10 @@ export function LeaderboardModal({ open, onClose, currentUserFid }: LeaderboardM
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
-      <div className="relative w-full max-w-3xl h-auto rounded-2xl border-2 border-[oklch(0.66_0.13_219.97_/1)]/60 bg-black/90 p-6 text-white shadow-[0_0_35px_oklch(0.62_0.12_230.75_/0.55)]">
+      <div
+        className="relative flex h-full w-full max-w-3xl flex-col overflow-hidden rounded-2xl border-2 border-[oklch(0.66_0.13_219.97_/1)]/60 bg-black/90 p-6 text-white shadow-[0_0_35px_oklch(0.62_0.12_230.75_/0.55)]"
+        style={{ maxHeight: 'calc(100dvh - 2rem)' }}
+      >
         <div className="mb-6 flex items-center justify-between">
           <div>
             <p className="text-[0.55rem] uppercase tracking-[0.5em] font-arcade text-white/40">
@@ -69,18 +72,21 @@ export function LeaderboardModal({ open, onClose, currentUserFid }: LeaderboardM
         </div>
 
         {loading ? (
-          <div className="flex flex-col items-center gap-3 py-10 text-sm font-arcade text-white/70">
+          <div className="flex flex-1 flex-col items-center gap-3 py-10 text-sm font-arcade text-white/70">
             <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/30 border-t-white" />
             Loading scores…
           </div>
         ) : error ? (
-          <div className="text-center text-sm text-red-400">{error}</div>
+          <div className="flex-1 text-center text-sm text-red-400">{error}</div>
         ) : entries.length === 0 ? (
-          <div className="text-center text-sm text-white/60 font-arcade">
+          <div className="flex-1 text-center text-sm text-white/60 font-arcade">
             No scores submitted yet.
           </div>
         ) : (
-          <div className="space-y-2">
+          <div
+            className="flex-1 space-y-2 overflow-y-auto pr-1"
+            style={{ maxHeight: 'min(60dvh, 420px)' }}
+          >
             {entries.map((entry, index) => {
               const isCurrentUser = currentUserFid !== undefined && entry.fid === currentUserFid;
               const place = index + 1;

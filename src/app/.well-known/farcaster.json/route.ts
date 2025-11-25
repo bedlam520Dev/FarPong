@@ -3,11 +3,9 @@ import { METADATA } from '../../../lib/utils';
 export function GET(): Response {
   const config = {
     accountAssociation: {
-      header:
-        'eyJmaWQiOjMxMTgyMiwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDg0ZEE3MTJhMjY4MDY2QjM0ZTJmMzI2NjlGRjVBNjI2MDA1Qzk3ZTEifQ',
-      payload: 'eyJkb21haW4iOiJsaXZlLWhvcGUtOTU1LmFwcC5vaGFyYS5haSJ9',
-      signature:
-        'UBaJ3XMlnAe6VGKMj9gVwNZOkk45D8HioiwSmMEqNm5iFrLu/d7wXU7vMYsNJhwknKSi42JrIlfdRtdhr0cOSBs=',
+      header: '',
+      payload: '',
+      signature: '',
     },
     baseBuilder: {
       allowedAddresses: ['0x835d8806E9Ea719c6A67a98c687FCfa117fee29F'],
@@ -53,7 +51,7 @@ export function GET(): Response {
         'wallet.getEthereumProvider',
       ],
       requiredChains: ['eip155:8453'],
-      canonicalDomain: 'live-hope-955.app.ohara.ai',
+      canonicalDomain: 'farpong.vercel.app',
     },
   };
 

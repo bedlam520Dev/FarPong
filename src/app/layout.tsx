@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
 import { MartianMono, PressStart2P, Roboto } from '~/lib/fonts';
@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     url: METADATA.homeUrl,
     siteName: METADATA.name,
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({
@@ -43,14 +51,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${PressStart2P.variable} ${MartianMono.variable} ${Roboto.variable}`}
+      className={`h-full ${PressStart2P.variable} ${MartianMono.variable} ${Roboto.variable}`}
       suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFouc }} />
       </head>
-      <body>
-        <Providers>{children}</Providers>
+      <body className="flex h-full w-full overflow-hidden antialiased">
+        <Providers>
+          <div className="flex h-full w-full flex-1 items-stretch justify-center overflow-hidden">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

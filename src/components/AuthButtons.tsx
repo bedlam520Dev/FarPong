@@ -139,13 +139,13 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
   const logoUrl = '/1024x1024-tg.png';
 
   return (
-    <div className="relative flex h-screen w-screen flex-col items-center bg-[oklch(0.1287_0.0078_268.54_/1)] text-white">
+    <div className="relative flex min-h-dvh w-full flex-col items-center overflow-hidden bg-[oklch(0.1287_0.0078_268.54_/1)] px-4 py-6 text-white">
       {/* background glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,oklch(0.59_0.17_297.31_/0.18),transparent_55%)]" />
 
       {/* main content */}
-      <main className="relative flex flex-col w-full h-auto items-center justify-center px-4">
-        <div className="flex flex-col items-center gap-4 text-center mb-6">
+      <main className="relative z-10 flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-6">
+        <div className="flex w-full flex-col items-center gap-4 text-center">
           <header className="flex flex-col items-center mb-6">
             <Image
               src={logoUrl}
@@ -201,11 +201,14 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
             </div>
           </div>
 
-          <section className="mt-2 flex w-full flex-col items-center rounded-xl border border-white/5 bg-white/5 px-3 py-3 text-[0.7rem] text-white/70">
+          <section
+            className="mt-2 flex w-full flex-col items-center rounded-xl border border-white/5 bg-white/5 px-3 py-3 text-[0.7rem] text-white/70"
+            style={{ maxHeight: 'min(320px, 45vh)' }}
+          >
             <h3 className="mb-1 flex items-center justify-center gap-2 text-[0.9rem] font-semibold uppercase tracking-[0.2em] text-white/80">
               <span>🎮</span> How To Play
             </h3>
-            <ul className="space-y-1.25 text-[0.75rem]">
+            <ul className="space-y-1.25 text-[0.75rem] overflow-y-auto">
               <li>Sign in with Farcaster/Base or jump in as guest.</li>
               <li>Pick your side (Farcaster left / Base right).</li>
               <li>Survive to 100 points — AI wins after 10.</li>
@@ -226,8 +229,8 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
           </section>
         </div>
       </main>
-      <div className="relative flex flex-row align-self-bottom my-2">
-        <footer className="w-90 flex flex-col align-middle justify-center px-1">
+      <div className="relative z-10 my-2 flex flex-row">
+        <footer className="flex w-full flex-col items-center justify-center px-1 text-center">
           <p className="relative flex flex-inline align-items-middle justify-center justify-self-auto gap-2 font-arcade text-xs text-white/50 text-center">
             Built with{' '}
             <span className="relative flex flex-inline w-4 h-[15h-4] overflow-hidden contain-content">
