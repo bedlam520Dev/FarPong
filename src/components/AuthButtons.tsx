@@ -150,8 +150,8 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
             <Image
               src={logoUrl}
               alt="FarPong Logo"
-              width={300}
-              height={300}
+              width={200}
+              height={200}
               className="rounded-xl logo-shadow-blur logo-shadow-spread logo-shadow-opacity logo-shadow-color"
               priority
             />
