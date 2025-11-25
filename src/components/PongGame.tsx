@@ -858,7 +858,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
             </div>
           </div>
 
-          <div className="relative text-center font-arcade text-[clamp(0.4rem,1vw,0.6rem)] uppercase tracking-[0.3em] text-white/50">
+          <div className="relative text-center font-arcade whitespace-nowrap text-[clamp(0.3rem,0.8vw,0.5rem)] uppercase tracking-[0.2em] text-white/50">
             · Survive to 100 · AI wins at 10 ·
           </div>
 
