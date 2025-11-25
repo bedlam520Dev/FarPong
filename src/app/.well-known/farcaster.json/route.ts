@@ -7,7 +7,7 @@ export function GET(): Response {
         'eyJmaWQiOjMxMTgyMiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweGRlY2U0OWVGMDhBNzVmMDI0OTlkOTY1YTM2ZUVBRWZGQ2REM0Q0ODMifQ',
       payload: 'eyJkb21haW4iOiJmYXJwb25nLnZlcmNlbC5hcHAifQ',
       signature:
-        'saPnHCPEE2gBSrYNHO36/knTkhslA88LwoxJnr1HDBci/x9LZ9GVE5a7Kga9bbgAoR6H2fZXJ1dbI6yuNeEgvRs=',
+        'hpWLp0jK4F8XDhiPAvGOunPGnGMLK505MqO0RY9W4Ugzzqlu4pkjtx2XmHEMtg1cj41NINIDMQOWcL2OlXaPRxw=',
     },
     baseBuilder: {
       allowedAddresses: ['0x835d8806E9Ea719c6A67a98c687FCfa117fee29F'],
