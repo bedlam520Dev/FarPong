@@ -15,6 +15,7 @@ export const METADATA = {
     'https://farpong.vercel.app/screen2.png',
     'https://farpong.vercel.app/screen3.png',
   ],
+  imageUrl: 'https://farpong.vercel.app/1050x700.png',
   bannerImageUrl: 'https://farpong.vercel.app/1200x630.png',
 };
 

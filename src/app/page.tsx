@@ -3,11 +3,12 @@ import type { Metadata } from 'next';
 import App from '~/app/app';
 import { METADATA } from '~/lib/utils';
 
-const frame = {
+const miniapp = {
   version: 'next',
-  heroImageUrl: METADATA.bannerImageUrl,
+  imageUrl: METADATA.imageUrl,
+  aspectRatio: '3:2',
   button: {
-    title: 'Open',
+    title: 'Play FarPong',
     action: {
       type: 'launch_frame',
       name: METADATA.name,
@@ -32,8 +33,7 @@ export function generateMetadata(): Metadata {
       siteName: METADATA.name,
     },
     other: {
-      'fc:frame': JSON.stringify(frame),
-      'fc:miniapp': JSON.stringify(frame),
+      'fc:miniapp': JSON.stringify(miniapp),
     },
   };
 }
