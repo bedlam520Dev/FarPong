@@ -25,6 +25,9 @@ const nextConfig: NextConfig = {
 
     return await Promise.resolve(securityHeaders);
   },
+  images: {
+    remotePatterns: [new URL('https://farpong.vercel.app/**')],
+  },
 };
 
 export default nextConfig;

@@ -794,13 +794,13 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
   ]);
 
   return (
-    <div className="relative flex min-h-dvh w-full flex-col items-center gap-4 overflow-hidden bg-linear-to-br from-black via-gray-900 to-black px-4 pb-6 pt-10">
+    <div className="relative flex min-h-dvh w-full flex-col items-center overflow-auto bg-linear-to-br from-black via-gray-900 to-black px-4 pb-2 pt-4">
       <div className="relative text-center">
-        <h1 className="relative font-arcade text-center mb-5 bg-linear-to-r from-gradient-brand-start via-gradient-brand-mid to-gradient-brand-end bg-clip-text text-[clamp(2.5rem,5vw,4rem)] font-bold text-transparent">
+        <h1 className="relative font-arcade text-center bg-linear-to-r from-gradient-brand-start via-gradient-brand-mid to-gradient-brand-end bg-clip-text text-[clamp(1rem,3vw,2rem)] font-bold text-transparent">
           FARPONG
         </h1>
         {user && (
-          <p className="relative font-arcade text-center text-xs my-4">
+          <p className="relative font-arcade text-center text-xs my-1">
             Welcome,{' '}
             <span className="bg-linear-to-r from-gradient-brand-start to-gradient-brand-end bg-clip-text font-arcade text-transparent">
               {user.displayName || user.username || `Player #${user.fid}`}
@@ -809,22 +809,22 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
           </p>
         )}
         {!gameState.gameStarted && (
-          <p className="relative font-arcade text-center text-[clamp(0.5rem,1.2vw,0.8rem)] mt-3 mb-5">
+          <p className="relative font-arcade text-center text-[clamp(0.5rem,1.2vw,0.8rem)] mt-2 mb-2">
             Choose your side to begin!
           </p>
         )}
       </div>
 
       <div className="flex w-full flex-1 items-center justify-center">
-        <div className="relative w-full max-w-4xl space-y-3">
+        <div className="relative w-full max-w-4xl space-y-2">
           <div
-            className="relative mx-auto flex h-auto w-full flex-row justify-center gap-5 rounded-[18px] border bg-black/40 py-2"
+            className="relative mx-auto flex h-auto w-full flex-row justify-center gap-5 rounded-[18px] border bg-black/40 py-1"
             style={{ borderColor: PANEL_BORDER, boxShadow: PANEL_GLOW }}
           >
             <div className="relative m-auto flex items-center gap-3">
-              <Image src="/far-square.svg" alt="Farcaster score" width={32} height={32} />
+              <Image src="/far-square.svg" alt="Farcaster score" width={30} height={30} />
               <div>
-                  <p
+                <p
                   className={`font-arcade text-[clamp(1.5rem,3vw,2.2rem)] font-bold ${
                     gameState.playerSide === 'left' ? 'text-white' : 'text-white/70'
                   }`}
@@ -854,7 +854,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
                   {formatScore(gameState.rightPaddle.score)}
                 </p>
               </div>
-              <Image src="/base-square.svg" alt="Base score" width={32} height={32} />
+              <Image src="/base-square.svg" alt="Base score" width={30} height={30} />
             </div>
           </div>
 
@@ -887,7 +887,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
       </div>
 
       {gameState.winner ? (
-        <div className="mt-6 flex w-full max-w-xs flex-col items-center gap-3 text-center font-arcade">
+        <div className="relative flex w-full max-w-xs flex-col mt-3 mb-2 items-center gap-3 text-center font-arcade">
           {user && user.fid > 0 && (
             <GradientActionButton
               label={scoreSubmitted ? 'Score Saved' : scoreSubmitting ? 'Saving…' : 'Submit Score'}
@@ -911,7 +911,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
           )}
         </div>
       ) : (
-        <div className="mt-6 flex w-full max-w-xs flex-col items-center gap-3">
+        <div className="mt-3 mb-2 flex w-full max-w-xs flex-col items-center gap-3">
           {gameState.gameStarted && (
             <GradientSmallButton
               label={gameState.isPaused ? 'Resume' : 'Pause'}

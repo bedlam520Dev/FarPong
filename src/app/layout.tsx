@@ -52,13 +52,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full ${PressStart2P.variable} ${MartianMono.variable} ${Roboto.variable}`}
+      className={`h-full w-full ${PressStart2P.variable} ${MartianMono.variable} ${Roboto.variable}`}
       suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFouc }} />
       </head>
-      <body className="flex h-full w-full overflow-auto antialiased">
+      <body className="h-dvh w-dvw antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>

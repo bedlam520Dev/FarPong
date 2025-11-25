@@ -76,7 +76,7 @@ export default function FrameProvider({ children }: { children: ReactNode }) {
       {!isSplashHidden && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center"
-          style={{ backgroundColor: METADATA.splashBackgroundColor || '#000000' }}
+          style={{ backgroundColor: METADATA.splashBackgroundColor || '' }}
         >
           <Image
             src={METADATA.splashImageUrl}

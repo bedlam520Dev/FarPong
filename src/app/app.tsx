@@ -69,10 +69,7 @@ export default function App() {
   }, []);
 
   return (
-    <div
-      ref={wrapperRef}
-      style={{ transform: `scale(${scale})`, transformOrigin: 'top left' }}
-    >
+    <div ref={wrapperRef} style={{ transform: `scale(${scale})`, transformOrigin: 'top left' }}>
       <MiniApp />
     </div>
   );

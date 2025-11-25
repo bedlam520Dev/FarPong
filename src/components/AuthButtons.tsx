@@ -136,37 +136,35 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
     }
   };
 
-  const logoUrl = '/1024x1024-tg.png';
-
   return (
-    <div className="relative flex min-h-dvh w-full flex-col items-center overflow-hidden bg-[oklch(0.1287_0.0078_268.54_/1)] px-4 py-6 text-white">
+    <div className="min-h-dvh min-w-dvw h-full w-full items-center bg-[oklch(0.1287_0.0078_268.54_/1)] px-4 py-4 text-white">
       {/* background glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,oklch(0.59_0.17_297.31_/0.18),transparent_55%)]" />
 
       {/* main content */}
-      <main className="relative z-10 flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-6">
-        <div className="flex w-full flex-col items-center gap-4 text-center">
-          <header className="flex flex-col items-center mb-6">
+      <main className="relative z-10 flex w-full flex-col items-center justify-center">
+        <div className="relative flex w-full flex-col items-center gap-2 text-center">
+          <header className="flex flex-col items-center mb-1">
             <Image
-              src={logoUrl}
+              src={'https://farpong.vercel.app/1024x1024-tg.png'}
               alt="FarPong Logo"
-              width={200}
-              height={200}
-              className="rounded-xl logo-shadow-blur logo-shadow-spread logo-shadow-opacity logo-shadow-color"
+              width={120}
+              height={120}
+              className="logo-shadow-blur logo-shadow-spread logo-shadow-opacity logo-shadow-color"
               priority
             />
-            <p className="font-arcade text-[clamp(0.5rem,1.2vw,0.8rem)] text-white/70">
-              Retro Nostalgia Farcaster MiniApp
+            <p className="relative flex text-center font-arcade text-sm text-white/70">
+              Retro Pong Style Gaming
             </p>
           </header>
 
           {error && (
-            <div className="w-full max-w-xs rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-[0.7rem] text-red-200">
+            <div className="w-full rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-[0.7rem] text-red-200">
               {error}
             </div>
           )}
 
-          <div className="flex w-full flex-col items-center gap-4">
+          <div className="flex w-full flex-col items-center gap-1">
             {platform !== 'base' && (
               <FarcasterSignInButton
                 onClick={() => {
@@ -184,7 +182,7 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
               />
             )}
 
-            <div className="flex flex-col flex-wrap items-center justify-center my-3 gap-4">
+            <div className="flex flex-col flex-wrap items-center justify-center my-2 gap-2">
               <GradientSmallButton
                 label="Play as Guest"
                 icon="play"
@@ -201,18 +199,18 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
             </div>
           </div>
 
-        <section
-            className="mt-2 flex w-full flex-col items-center rounded-xl border border-white/5 bg-white/5 px-3 py-3 text-[clamp(0.6rem,1.2vw,0.8rem)] text-white/70"
-            style={{ maxHeight: 'min(320px, 45vh)' }}
+          <section
+            className="relative flex w-full flex-col items-center rounded-xl border border-white/5 bg-white/5 px-1 py-2 text-[clamp(0.6rem,1.2vw,0.8rem)] text-white/70"
+            style={{ maxHeight: 'fit-content', minWidth: '70vw' }}
           >
             <h3 className="mb-1 flex items-center justify-center gap-2 text-[clamp(0.7rem,1.5vw,1rem)] font-semibold uppercase tracking-[0.2em] text-white/80">
               <span>🎮</span> How To Play
             </h3>
-            <ul className="space-y-1.25 text-[clamp(0.55rem,1vw,0.8rem)] overflow-y-auto">
+            <ul className="space-y-1 text-[clamp(0.55rem,1vw,0.8rem)] overflow-y-auto">
               <li>Sign in with Farcaster/Base or jump in as guest.</li>
               <li>Pick your side (Farcaster left / Base right).</li>
               <li>Survive to 100 points — AI wins after 10.</li>
-              <li className="flex flex-wrap items-center justify-center gap-1.25">
+              <li className="flex flex-wrap items-center justify-center gap-1">
                 <span>Desktop:</span>
                 <KbdGroup>
                   <Kbd>W</Kbd>
@@ -229,20 +227,20 @@ export function AuthButtons({ onUserAuthenticated }: AuthButtonsProps): JSX.Elem
           </section>
         </div>
       </main>
-      <div className="relative z-10 my-2 flex flex-row">
+      <div className="relative z-10 mt-2 flex flex-row">
         <footer className="flex w-full flex-col items-center justify-center px-1 text-center">
-          <p className="relative flex flex-inline align-items-middle justify-center justify-self-auto gap-2 font-arcade text-xs text-white/50 text-center">
+          <p className="relative flex flex-inline align-items-middle justify-center justify-self-auto gap-2 font-arcade text-[clamp(0.5rem,1.2vw,0.8rem)] text-white/50 text-center">
             Built with{' '}
-            <span className="relative flex flex-inline w-4 h-[15h-4] overflow-hidden contain-content">
-              <Image src="/heart.svg" alt="Farcaster" width={15} height={15} />
+            <span className="relative flex flex-inline w-3 h-[12h-3] overflow-hidden contain-content">
+              <Image src="/heart.svg" alt="Farcaster" width={12} height={12} />
             </span>
             on{' '}
-            <span className="relative flex flex-inline w-4 h-[15h-4] overflow-hidden contain-content">
-              <Image src="/far-square.svg" alt="Farcaster" width={15} height={15} />
+            <span className="relative flex flex-inline w-3 h-[12h-3] overflow-hidden contain-content">
+              <Image src="/far-square.svg" alt="Farcaster" width={12} height={12} />
             </span>
             &{' '}
-            <span className="relative flex flex-inline mb-1 w-4 h-[15h-4] overflow-hidden contain-content">
-              <Image src="/base-square.svg" alt="BaseApp" width={15} height={15} />
+            <span className="relative flex flex-inline mb-1 w-3 h-[12h-3] overflow-hidden contain-content">
+              <Image src="/base-square.svg" alt="BaseApp" width={12} height={12} />
             </span>
           </p>
         </footer>
