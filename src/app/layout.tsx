@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  height: 'device-height',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -57,12 +58,8 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFouc }} />
       </head>
-      <body className="flex h-full w-full overflow-hidden antialiased">
-        <Providers>
-          <div className="flex h-full w-full flex-1 items-stretch justify-center overflow-hidden">
-            {children}
-          </div>
-        </Providers>
+      <body className="flex h-full w-full overflow-auto antialiased">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
