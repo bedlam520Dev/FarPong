@@ -31,6 +31,10 @@ export function SwapTokenAction() {
     }
   }, []);
 
+  const handleButtonClick = useCallback((): void => {
+    void handleSwapToken();
+  }, [handleSwapToken]);
+
   return (
     <div className="mb-4">
       <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
@@ -43,7 +47,7 @@ export function SwapTokenAction() {
           <pre className="font-mono text-xs text-emerald-500 dark:text-emerald-400">{error}</pre>
         </div>
       )}
-      <Button onClick={handleSwapToken}>Swap Token</Button>
+      <Button onClick={handleButtonClick}>Swap Token</Button>
     </div>
   );
 }

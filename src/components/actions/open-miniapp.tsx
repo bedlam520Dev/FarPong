@@ -28,9 +28,10 @@ const MINIAPP_OPTIONS = [
 ];
 
 export function OpenMiniAppAction() {
-  const [selectedOption, setSelectedOption] = useState(MINIAPP_OPTIONS[0]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const selectedOption = MINIAPP_OPTIONS[selectedIndex];
 
   const handleOpenMiniApp = useCallback(async (): Promise<void> => {
     setLoading(true);
@@ -48,6 +49,10 @@ export function OpenMiniAppAction() {
     }
   }, [selectedOption.url]);
 
+  const handleClick = useCallback((): void => {
+    void handleOpenMiniApp();
+  }, [handleOpenMiniApp]);
+
   return (
     <div className="mb-4">
       <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
@@ -58,12 +63,12 @@ export function OpenMiniAppAction() {
 
       <div className="mb-2">
         <select
-          value={JSON.stringify(selectedOption)}
-          onChange={(e) => setSelectedOption(JSON.parse(e.target.value))}
+          value={selectedIndex}
+          onChange={(event) => setSelectedIndex(Number(event.target.value))}
           className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded-lg dark:bg-gray-800 text-emerald-500 dark:text-emerald-400"
         >
-          {MINIAPP_OPTIONS.map((option) => (
-            <option key={option.url} value={JSON.stringify(option)}>
+          {MINIAPP_OPTIONS.map((option, index) => (
+            <option key={option.url} value={index}>
               {option.name}
             </option>
           ))}
@@ -78,7 +83,7 @@ export function OpenMiniAppAction() {
         </div>
       )}
 
-      <Button onClick={handleOpenMiniApp} disabled={loading} isLoading={loading}>
+      <Button onClick={handleClick} disabled={loading} isLoading={loading}>
         Open Mini App
       </Button>
     </div>

@@ -23,6 +23,10 @@ export function QuickAuthAction() {
     }
   }, []);
 
+  const handleClick = useCallback((): void => {
+    void handleGetToken();
+  }, [handleGetToken]);
+
   return (
     <div className="mb-4">
       <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
@@ -30,7 +34,7 @@ export function QuickAuthAction() {
           sdk.quickAuth.getToken
         </pre>
       </div>
-      <Button onClick={handleGetToken} disabled={loading}>
+      <Button onClick={handleClick} disabled={loading}>
         Get Token
       </Button>
       {token && (

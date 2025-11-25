@@ -1,27 +1,59 @@
-# Base Mini App Demo
+# FarPong
 
-A demo [mini app](https://miniapps.farcaster.xyz) to demonstrate the functionality available for mini app developers in [Base App](https://base.app).
+FarPong is a Farcaster miniapp that brings a fast-twitch twist to the classic Pong arcade experience. It combines Farcaster account auth, Base connectivity, and real-time gameplay loops so channels and frames can host drop-in matches without leaving the Farcaster client.
 
-Note: this Base Mini App Demo used to live [here](https://github.com/Vicolee/frames-v2-demo) and was recently moved to this `base/demos` repo so it can be more easily found
+## Highlights
+
+- Built for Farcaster Frames and miniapp surfaces with the official Farcaster SDK stack.
+- Wallet-aware sessions that lean on Base + wagmi for onchain-ready interactions.
+- Responsive Tailwind UI with shadcn components tuned for mobile-first casting.
+- Structured for remixing: modular game logic, reusable UI primitives, and clean state management.
 
 ## Getting Started
 
-This is a [NextJS](https://nextjs.org/) + TypeScript + React app.
-
-To install dependencies:
+> Prerequisites: Node.js 22+, pnpm 10+, an app key in the Farcaster Developer Console, and (optionally) Base testnet credentials for transaction-enabled features.
 
 ```bash
-$ yarn
+# install dependencies
+pnpm install
+
+# run local dev server
+pnpm dev
+
+# lint before pushing
+pnpm lint
+
+# build production bundle
+pnpm build
 ```
 
-To run the app:
+Create a `.env.local` file based on the keys you receive from the Farcaster miniapp dashboard. Typical values:
 
-```bash
-$ yarn dev
+```
+NEXT_PUBLIC_FARCASTER_CLIENT_ID=...
+NEXT_PUBLIC_FARCASTER_REDIRECT_URI=https://localhost:3000/api/auth/callback
+MINIAPP_SIGNING_KEY=...
+BASE_RPC_URL=...
 ```
 
-To test your mini app in Farcaster's playground or in Base App, you'll want to use a tunneling tool like [ngrok](https://ngrok.com/)
+## Architecture Notes
 
-## Relevant Links
-- [Mini Apps in Base App Docs](https://docs.base.org/base-app/introduction/mini-apps)
-- [MiniKit Docs](https://docs.base.org/base-app/build-with-minikit/overview)
+- `src/` contains the app shell, game scenes, and hooks wrapping Farcaster miniapp APIs.
+- `public/` houses static assets, including future sprite art and sound effects.
+- `@farcaster/miniapp-sdk`, `@farcaster/miniapp-node`, and `@coinbase/onchainkit` handle auth, session hydration, and Base connectivity.
+- React Query and Zod help orchestrate async flows and input validation.
+
+## Roadmap
+
+- Hook up production Farcaster frame endpoints and guardrails.
+- Polish game balance, power-up cadence, and latency smoothing.
+- Add match history + simple onchain rewards tied to Base actions.
+- Drop in QA automations (unit + frame integration tests).
+
+## Contributing
+
+Open an issue or ping @bedlam520 on Farcaster if you have ideas, want to test, or plan to remix the miniapp. Please keep the attribution requirements from the license when you ship derivatives.
+
+## License
+
+Released under the custom Attribution License found in `LICENSE`. You are free to remix, redistribute, and build on FarPong as long as you clearly credit BEDLAM520 Development and the FarPong project.

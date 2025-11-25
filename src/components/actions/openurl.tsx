@@ -6,7 +6,7 @@ import { Button } from '~/components/ui/button';
 
 export function OpenUrlAction() {
   const openUrl = useCallback((): void => {
-    sdk.actions.openUrl('https://ohara.ai');
+    void sdk.actions.openUrl('https://ohara.ai');
   }, []);
 
   return (

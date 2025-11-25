@@ -1,4 +1,5 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+
 import App from '~/app/app';
 import { METADATA } from '~/lib/utils';
 
@@ -19,8 +20,15 @@ const frame = {
 
 export const revalidate = 300;
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
   return {
+    metadataBase: new URL('http://localhost:3000'),
+    alternates: {
+      canonical: '/',
+      languages: {
+        'en-US': '/en-US',
+      },
+    },
     title: METADATA.name,
     openGraph: {
       title: METADATA.name,

@@ -3,3 +3,5 @@ node_modules
 _dev
 _devlogs
 pnpm-lock.yaml
+src/components/snippets
+next-env.d.ts

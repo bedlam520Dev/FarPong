@@ -75,6 +75,10 @@ export function ComposeCastAction() {
     }
   }, [text, embed1, embed2, channelKey, close, parentHash]);
 
+  const handleComposeClick = useCallback((): void => {
+    void composeCast();
+  }, [composeCast]);
+
   return (
     <div className="mb-4">
       <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
@@ -133,7 +137,7 @@ export function ComposeCastAction() {
             value={channelKey}
             onChange={(e) => setChannelKey(e.target.value)}
             className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="e.g. farcaster, warpcast"
+            placeholder="e.g. farcaster, Farcaster"
           />
         </div>
 
@@ -164,7 +168,7 @@ export function ComposeCastAction() {
         </div>
       </div>
 
-      <Button onClick={composeCast} disabled={loading}>
+      <Button onClick={handleComposeClick} disabled={loading}>
         Compose Cast
       </Button>
 

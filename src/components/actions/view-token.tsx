@@ -10,7 +10,7 @@ export function ViewTokenAction() {
   );
 
   const handleViewToken = useCallback((): void => {
-    sdk.actions.viewToken({ token });
+    void sdk.actions.viewToken({ token });
   }, [token]);
 
   return (

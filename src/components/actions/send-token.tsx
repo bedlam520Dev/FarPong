@@ -40,6 +40,10 @@ export function SendTokenAction() {
     }
   }, [recipientAddress, amount]);
 
+  const handleButtonClick = useCallback((): void => {
+    void handleSendToken();
+  }, [handleSendToken]);
+
   return (
     <div className="mb-4">
       <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
@@ -88,7 +92,7 @@ export function SendTokenAction() {
           <pre className="font-mono text-xs text-green-500 dark:text-green-400">{success}</pre>
         </div>
       )}
-      <Button onClick={handleSendToken}>Send {amount} USDC</Button>
+      <Button onClick={handleButtonClick}>Send {amount} USDC</Button>
     </div>
   );
 }

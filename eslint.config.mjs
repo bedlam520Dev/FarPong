@@ -28,7 +28,7 @@ const typeCheckedConfigs = tseslint.configs.recommendedTypeChecked.map((config) 
 
 export default tseslint.config(
   {
-    ignores: ['.next/', 'node_modules/', '_dev/', '_devlogs/', 'pnpm-lock.yaml', '_devlogs/'],
+    ignores: ['.next/', 'node_modules/', '_dev/', '_devlogs/', 'pnpm-lock.yaml'],
   },
   js.configs.recommended,
   ...typeCheckedConfigs,

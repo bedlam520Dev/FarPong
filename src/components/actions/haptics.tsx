@@ -5,40 +5,40 @@ import { useCallback } from 'react';
 import { Button } from '~/components/ui/button';
 
 export function HapticsAction() {
-  const triggerImpactLight = useCallback(async (): Promise<void> => {
-    await sdk.haptics.impactOccurred('light');
+  const triggerImpactLight = useCallback((): void => {
+    void sdk.haptics.impactOccurred('light');
   }, []);
 
-  const triggerImpactMedium = useCallback(async (): Promise<void> => {
-    await sdk.haptics.impactOccurred('medium');
+  const triggerImpactMedium = useCallback((): void => {
+    void sdk.haptics.impactOccurred('medium');
   }, []);
 
-  const triggerImpactHeavy = useCallback(async (): Promise<void> => {
-    await sdk.haptics.impactOccurred('heavy');
+  const triggerImpactHeavy = useCallback((): void => {
+    void sdk.haptics.impactOccurred('heavy');
   }, []);
 
-  const triggerImpactSoft = useCallback(async (): Promise<void> => {
-    await sdk.haptics.impactOccurred('soft');
+  const triggerImpactSoft = useCallback((): void => {
+    void sdk.haptics.impactOccurred('soft');
   }, []);
 
-  const triggerImpactRigid = useCallback(async (): Promise<void> => {
-    await sdk.haptics.impactOccurred('rigid');
+  const triggerImpactRigid = useCallback((): void => {
+    void sdk.haptics.impactOccurred('rigid');
   }, []);
 
-  const triggerNotificationSuccess = useCallback(async (): Promise<void> => {
-    await sdk.haptics.notificationOccurred('success');
+  const triggerNotificationSuccess = useCallback((): void => {
+    void sdk.haptics.notificationOccurred('success');
   }, []);
 
-  const triggerNotificationWarning = useCallback(async (): Promise<void> => {
-    await sdk.haptics.notificationOccurred('warning');
+  const triggerNotificationWarning = useCallback((): void => {
+    void sdk.haptics.notificationOccurred('warning');
   }, []);
 
-  const triggerNotificationError = useCallback(async (): Promise<void> => {
-    await sdk.haptics.notificationOccurred('error');
+  const triggerNotificationError = useCallback((): void => {
+    void sdk.haptics.notificationOccurred('error');
   }, []);
 
-  const triggerSelectionChanged = useCallback(async (): Promise<void> => {
-    await sdk.haptics.selectionChanged();
+  const triggerSelectionChanged = useCallback((): void => {
+    void sdk.haptics.selectionChanged();
   }, []);
 
   return (

@@ -25,6 +25,10 @@ export function GetCapabilitiesAction() {
     }
   }, []);
 
+  const handleClick = useCallback((): void => {
+    void handleGetCapabilities();
+  }, [handleGetCapabilities]);
+
   return (
     <div className="mb-4">
       <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
@@ -32,7 +36,7 @@ export function GetCapabilitiesAction() {
           sdk.getCapabilities
         </pre>
       </div>
-      <Button onClick={handleGetCapabilities} disabled={loading}>
+      <Button onClick={handleClick} disabled={loading}>
         Get Capabilities
       </Button>
       {error && !loading && (

@@ -50,7 +50,7 @@ export async function detectPlatform(): Promise<PlatformInfo> {
 
   // Check referrer
   const referrer = document.referrer.toLowerCase();
-  if (referrer.includes('warpcast.com') || referrer.includes('farcaster')) {
+  if (referrer.includes('Farcaster.com') || referrer.includes('farcaster')) {
     return {
       platform: 'farcaster',
       isFarcaster: true,
@@ -68,7 +68,7 @@ export async function detectPlatform(): Promise<PlatformInfo> {
 
   // Check user agent for Farcaster-specific signals
   const userAgent = navigator.userAgent.toLowerCase();
-  if (userAgent.includes('farcaster') || userAgent.includes('warpcast')) {
+  if (userAgent.includes('farcaster') || userAgent.includes('Farcaster')) {
     return {
       platform: 'farcaster',
       isFarcaster: true,
@@ -88,19 +88,30 @@ export async function detectPlatform(): Promise<PlatformInfo> {
       };
     }
   } catch (error) {
-    // SDK not available or not in mini app
+    console.debug('Farcaster miniapp SDK context unavailable', error);
   }
 
   // Check for Base-specific window properties
   if (typeof window !== 'undefined') {
-    // Check if ethereum provider is Base
-    const ethereum = (window as any).ethereum;
-    if (ethereum?.isBaseWallet || ethereum?.isCoinbaseWallet) {
-      return {
-        platform: 'base',
-        isFarcaster: false,
-        isBase: true,
-      };
+    type BaseAwareProvider = {
+      isBaseWallet?: boolean;
+      isCoinbaseWallet?: boolean;
+    };
+    const baseAwareWindow = window as { ethereum?: unknown };
+    const maybeProvider = baseAwareWindow.ethereum;
+    if (
+      typeof maybeProvider === 'object' &&
+      maybeProvider !== null &&
+      ('isBaseWallet' in maybeProvider || 'isCoinbaseWallet' in maybeProvider)
+    ) {
+      const provider = maybeProvider as BaseAwareProvider;
+      if (provider.isBaseWallet || provider.isCoinbaseWallet) {
+        return {
+          platform: 'base',
+          isFarcaster: false,
+          isBase: true,
+        };
+      }
     }
   }
 
@@ -128,19 +139,21 @@ export function getPlatformConfig(platform: Platform): {
   if (platform === 'base') {
     return {
       name: 'Base',
-      color: '#0000ff',
-      gradient: 'from-[#0000ff] to-[#0000cc]',
-      hoverGradient: 'hover:from-[#1a1aff] hover:to-[#0000ff]',
+      color: 'oklch(0.45 0.31 264.05 / 1)',
+      gradient: 'from-[oklch(0.45 0.31 264.05 / 1)] to-[oklch(0.38 0.26 264.05 / 1)]',
+      hoverGradient:
+        'hover:from-[oklch(0.47 0.30 266.25 / 1)] hover:to-[oklch(0.45 0.31 264.05 / 1)]',
       addToAppUrl: 'https://base.org',
       addToAppText: 'Add MiniApp to BaseApp',
     };
   }
   return {
     name: 'Farcaster',
-    color: '#8A63D2',
-    gradient: 'from-[#8A63D2] to-[#7952C0]',
-    hoverGradient: 'hover:from-[#9B74E3] hover:to-[#8A63D2]',
-    addToAppUrl: `https://warpcast.com/~/compose?embeds[]=${encodeURIComponent(origin)}`,
+    color: 'oklch(0.59 0.17 297.31 / 1)',
+    gradient: 'from-[oklch(0.59 0.17 297.31 / 1)] to-[oklch(0.54 0.17 296.76 / 1)]',
+    hoverGradient:
+      'hover:from-[oklch(0.65 0.16 297.89 / 1)] hover:to-[oklch(0.59 0.17 297.31 / 1)]',
+    addToAppUrl: `https://farcaster.xyz/~/compose?embeds[]=${encodeURIComponent(origin)}`,
     addToAppText: 'Add MiniApp to Farcaster',
   };
 }

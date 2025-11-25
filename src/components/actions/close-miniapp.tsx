@@ -6,7 +6,7 @@ import { Button } from '~/components/ui/button';
 
 export function CloseMiniAppAction() {
   const close = useCallback((): void => {
-    sdk.actions.close();
+    void sdk.actions.close();
   }, []);
 
   return (

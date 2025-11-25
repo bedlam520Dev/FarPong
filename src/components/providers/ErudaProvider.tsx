@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 export default function ErudaProvider() {
   useEffect(() => {
-    import('eruda').then((eruda) => {
+    void import('eruda').then((eruda) => {
       if (!window.eruda) {
         window.eruda = eruda.default;
         const erudaInstance = eruda.default as {
@@ -24,7 +24,6 @@ export default function ErudaProvider() {
           },
         });
 
-        // Position the trigger button in bottom right corner
         setTimeout(() => {
           erudaInstance.position({ x: window.innerWidth - 60, y: window.innerHeight - 60 });
         }, 100);

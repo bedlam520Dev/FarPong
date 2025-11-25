@@ -10,7 +10,7 @@ export function ViewProfileAction() {
   const [fid, setFid] = useState<string>('3');
 
   const handleViewProfile = useCallback((): void => {
-    sdk.actions.viewProfile({ fid: parseInt(fid) });
+    void sdk.actions.viewProfile({ fid: Number.parseInt(fid, 10) });
   }, [fid]);
 
   return (

@@ -8,7 +8,7 @@ export function ViewCastAction() {
   const [castHash, setCastHash] = useState<string>('0xfb2e255124ddb549a53fb4b1afdf4fa9f3542f78');
 
   const handleViewCast = useCallback((): void => {
-    sdk.actions.viewCast({ hash: castHash, close: false });
+    void sdk.actions.viewCast({ hash: castHash, close: false });
   }, [castHash]);
 
   return (

@@ -6,7 +6,7 @@ import { Button } from '~/components/ui/button';
 
 export function SetPrimaryButtonAction() {
   const setPrimaryButton = useCallback((): void => {
-    sdk.actions.setPrimaryButton({
+    void sdk.actions.setPrimaryButton({
       text: 'New label set!!',
       loading: false,
       disabled: false,

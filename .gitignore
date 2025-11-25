@@ -40,3 +40,5 @@ next-env.d.ts
 # dev
 /_dev
 /_devlogs
+.vscode
+pnpm-lock.yaml

@@ -23,8 +23,7 @@ import { SignInWithBaseButton } from '@base-org/account-ui/react';
 import { SiweMessage } from 'siwe';
 import { METADATA } from '~/lib/utils';
 
-// dylsteck.base.eth
-const RECIPIENT_ADDRESS = '0x8342A48694A74044116F330db5050a267b28dD85';
+const RECIPIENT_ADDRESS = '0x835d8806E9Ea719c6A67a98c687FCfa117fee29F';
 
 const baseAccountSDK = createBaseAccountSDK({
   appName: METADATA.name,
@@ -73,13 +72,14 @@ export function WalletConnect() {
         </Button>
       </div>
 
-      {/* Base Account Sign In Button */}
       <div className="mb-4">
         <SignInWithBaseButton
           align="center"
           variant="solid"
           colorScheme="light"
-          onClick={handleBaseSignIn}
+          onClick={() => {
+            void handleBaseSignIn();
+          }}
         />
         {baseSignedIn && (
           <div className="mt-2 text-center text-sm text-green-600">
@@ -130,7 +130,13 @@ export function SignMessage() {
 
   return (
     <>
-      <Button onClick={handleSignMessage} disabled={isSignPending} isLoading={isSignPending}>
+      <Button
+        onClick={() => {
+          void handleSignMessage();
+        }}
+        disabled={isSignPending}
+        isLoading={isSignPending}
+      >
         Sign Message
       </Button>
       {isSignError && renderError(signError)}
@@ -180,7 +186,13 @@ export function SignSiweMessage() {
 
   return (
     <>
-      <Button onClick={handleSignSiweMessage} disabled={isSignPending} isLoading={isSignPending}>
+      <Button
+        onClick={() => {
+          void handleSignSiweMessage();
+        }}
+        disabled={isSignPending}
+        isLoading={isSignPending}
+      >
         Sign Message (SIWE)
       </Button>
       {isSignError && renderError(signError)}
@@ -195,7 +207,7 @@ export function SignSiweMessage() {
 }
 
 export function SendEth() {
-  const { isConnected, chainId } = useAccount();
+  const { isConnected } = useAccount();
   const {
     sendTransaction,
     data,
@@ -251,7 +263,7 @@ export function SignTypedData() {
   const signTyped = useCallback((): void => {
     signTypedData({
       domain: {
-        name: 'Frames v2 Demo',
+        name: 'Farpong MiniApp',
         version: '1',
         chainId,
       },
@@ -259,7 +271,7 @@ export function SignTypedData() {
         Message: [{ name: 'content', type: 'string' }],
       },
       message: {
-        content: 'Hello from Frames v2!',
+        content: 'Retro Gamers Nostalgia',
       },
       primaryType: 'Message',
     });

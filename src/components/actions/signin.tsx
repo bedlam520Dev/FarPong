@@ -14,9 +14,8 @@ export function SignInAction() {
   const [verifyResponse, setVerifyResponse] = useState<unknown>(undefined);
   const [verifyParams, setVerifyParams] = useState<unknown>(undefined);
 
-  const getNonce = useCallback(async (): Promise<string> => {
-    // const nonce = await getCsrfToken();
-    const nonce = await generateNonce();
+  const getNonce = useCallback((): string => {
+    const nonce = generateNonce();
     if (!nonce) throw new Error('Unable to generate nonce');
     return nonce;
   }, []);
@@ -29,7 +28,7 @@ export function SignInAction() {
       setSignInFailure(undefined);
       setVerifyResponse(undefined);
       setVerifyParams(undefined);
-      const nonce = await getNonce();
+      const nonce = getNonce();
       const result = await sdk.actions.signIn({ nonce });
       setSignInResult(result);
 
@@ -64,7 +63,12 @@ export function SignInAction() {
       <div className="p-3 bg-muted border border-border rounded-lg my-2">
         <pre className="font-mono text-xs text-primary font-medium">sdk.actions.signIn</pre>
       </div>
-      <Button onClick={handleSignIn} disabled={signingIn}>
+      <Button
+        onClick={() => {
+          void handleSignIn();
+        }}
+        disabled={signingIn}
+      >
         {signingIn ? 'Signing In...' : 'Sign In with Farcaster'}
       </Button>
       {signInFailure && !signingIn && (

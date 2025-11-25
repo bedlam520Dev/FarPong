@@ -1,7 +1,12 @@
 'use client';
 
-import { sdk } from '@farcaster/miniapp-sdk';
+import Image from 'next/image';
+import type { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
+
+import { sdk } from '@farcaster/miniapp-sdk';
+
+import { METADATA } from '~/lib/utils';
 
 interface SafeAreaInsets {
   top: number;
@@ -41,30 +46,48 @@ const FrameContext = createContext<FrameContextType>(null);
 
 export const useFrameContext = () => useContext(FrameContext);
 
-export default function FrameProvider({ children }: { children: React.ReactNode }) {
+export default function FrameProvider({ children }: { children: ReactNode }) {
   const [frameContext, setFrameContext] = useState<FrameContextType>(null);
+  const [isSplashHidden, setIsSplashHidden] = useState(false);
 
   useEffect(() => {
     const init = async () => {
       try {
         const context = await sdk.context;
-        sdk.actions.ready();
-        await new Promise((resolve) => setTimeout(resolve, 100));
-
         const isInMiniApp = await sdk.isInMiniApp();
         setFrameContext({ context, isInMiniApp });
-
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        await sdk.actions.ready();
+        setIsSplashHidden(true);
       } catch (error) {
+        console.error('Failed to initialize miniapp context', error);
         setFrameContext({
           context: { error: 'Failed to initialize' },
           isInMiniApp: false,
         });
+        setIsSplashHidden(true);
       }
     };
 
-    init();
+    void init();
   }, []);
 
-  return <FrameContext.Provider value={frameContext}>{children}</FrameContext.Provider>;
+  return (
+    <FrameContext.Provider value={frameContext}>
+      {!isSplashHidden && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          style={{ backgroundColor: METADATA.splashBackgroundColor || '#000000' }}
+        >
+          <Image
+            src={METADATA.splashImageUrl}
+            alt="FarPong Splash"
+            width={200}
+            height={200}
+            priority
+          />
+        </div>
+      )}
+      {children}
+    </FrameContext.Provider>
+  );
 }

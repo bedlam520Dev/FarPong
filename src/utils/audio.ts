@@ -3,7 +3,14 @@ export class GameAudio {
 
   constructor() {
     if (typeof window !== 'undefined') {
-      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      type ExtendedWindow = Window & {
+        webkitAudioContext?: typeof AudioContext;
+      };
+
+      const AudioContextConstructor =
+        window.AudioContext || (window as ExtendedWindow).webkitAudioContext;
+
+      this.audioContext = AudioContextConstructor ? new AudioContextConstructor() : null;
     }
   }
 

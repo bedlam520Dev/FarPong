@@ -40,7 +40,7 @@ export function RequestCameraMicrophoneAction() {
     try {
       analyserRef.current?.disconnect();
       analyserRef.current = null;
-      audioContextRef.current?.close().catch(() => undefined);
+      void audioContextRef.current?.close().catch(() => undefined);
     } catch {
       // ignore
     } finally {
@@ -113,7 +113,7 @@ export function RequestCameraMicrophoneAction() {
 
           videoRef.current.onloadedmetadata = () => {
             if (videoRef.current) {
-              videoRef.current.play();
+              void videoRef.current.play();
             }
           };
         }
@@ -121,8 +121,17 @@ export function RequestCameraMicrophoneAction() {
         setResult('Camera started successfully!');
       } else {
         // Microphone level meter via Web Audio API
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        type ExtendedWindow = Window & {
+          webkitAudioContext?: typeof AudioContext;
+        };
+        const AudioContextConstructor =
+          window.AudioContext || (window as ExtendedWindow).webkitAudioContext;
+
+        if (!AudioContextConstructor) {
+          throw new Error('Web Audio API is not supported in this environment.');
+        }
+
+        const audioContext = new AudioContextConstructor();
         audioContextRef.current = audioContext;
 
         const constraints: MediaStreamConstraints = { video: false, audio: true };
@@ -175,16 +184,27 @@ export function RequestCameraMicrophoneAction() {
     if (isCapturing) {
       stopAll();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode]);
+  }, [isCapturing, mode, stopAll]);
 
   // Cleanup on unmount
-  useEffect(() => stopAll, [stopAll]);
+  useEffect(() => {
+    return () => {
+      stopAll();
+    };
+  }, [stopAll]);
 
   // Initial context check
   useEffect(() => {
-    checkContext();
+    void checkContext();
   }, [checkContext]);
+
+  const handleRequestAccessClick = useCallback((): void => {
+    void handleRequestAccess();
+  }, [handleRequestAccess]);
+
+  const handleStartCaptureClick = useCallback((): void => {
+    void startCapture();
+  }, [startCapture]);
 
   return (
     <div className="space-y-4">
@@ -234,12 +254,12 @@ export function RequestCameraMicrophoneAction() {
       {/* Controls */}
       <div className="grid grid-cols-2 gap-2">
         {hasContext && (
-          <Button onClick={handleRequestAccess} disabled={loading}>
+          <Button onClick={handleRequestAccessClick} disabled={loading}>
             {loading ? 'Requesting...' : 'Request Access'}
           </Button>
         )}
         {!isCapturing ? (
-          <Button onClick={startCapture} disabled={loading || !hasPermissions}>
+          <Button onClick={handleStartCaptureClick} disabled={loading || !hasPermissions}>
             {loading ? 'Starting...' : `Start ${mode}`}
           </Button>
         ) : (

@@ -1,0 +1,53 @@
+<svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.869308 0.959961L12.341 8.25977L12.7961 8.54883L12.341 8.83789L0.869308 16.1387L0.342941 16.4736V0.624023L0.869308 0.959961Z" fill="url(#paint0_linear_26_539)" stroke="url(#paint1_linear_26_539)" stroke-width="0.685714"/>
+<defs>
+<linearGradient id="paint0_linear_26_539" x1="0.685715" y1="8.54902" x2="12.1571" y2="8.54902" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8000FF"/>
+<stop offset="0.05" stop-color="#850AFF"/>
+<stop offset="0.1" stop-color="#8A14FF"/>
+<stop offset="0.15" stop-color="#8F1FFF" stop-opacity="0.98"/>
+<stop offset="0.2" stop-color="#9429FF" stop-opacity="0.96"/>
+<stop offset="0.25" stop-color="#9933FF" stop-opacity="0.94"/>
+<stop offset="0.3" stop-color="#9E3DFF" stop-opacity="0.92"/>
+<stop offset="0.35" stop-color="#A347FF" stop-opacity="0.9"/>
+<stop offset="0.4" stop-color="#A64DFF" stop-opacity="0.89"/>
+<stop offset="0.45" stop-color="#AB57FF" stop-opacity="0.88"/>
+<stop offset="0.5" stop-color="#8E6BFF" stop-opacity="0.87"/>
+<stop offset="0.5499" stop-color="#5B7AFF" stop-opacity="0.87"/>
+<stop offset="0.55" stop-color="#4281FF" stop-opacity="0.88"/>
+<stop offset="0.6" stop-color="#387AFF" stop-opacity="0.89"/>
+<stop offset="0.65" stop-color="#3377FF" stop-opacity="0.9"/>
+<stop offset="0.7" stop-color="#2E74FF" stop-opacity="0.92"/>
+<stop offset="0.75" stop-color="#2970FF" stop-opacity="0.94"/>
+<stop offset="0.8" stop-color="#1F69FF" stop-opacity="0.96"/>
+<stop offset="0.85" stop-color="#0A5CFF" stop-opacity="0.98"/>
+<stop offset="0.9" stop-color="#0052F5"/>
+<stop offset="0.95" stop-color="#004DE6"/>
+<stop offset="1" stop-color="#004BE0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_26_539" x1="0.685715" y1="8.54902" x2="12.1571" y2="8.54902" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8000FF"/>
+<stop offset="0.05" stop-color="#850AFF"/>
+<stop offset="0.1" stop-color="#8A14FF"/>
+<stop offset="0.15" stop-color="#8F1FFF" stop-opacity="0.98"/>
+<stop offset="0.2" stop-color="#9429FF" stop-opacity="0.96"/>
+<stop offset="0.25" stop-color="#9933FF" stop-opacity="0.94"/>
+<stop offset="0.3" stop-color="#9E3DFF" stop-opacity="0.92"/>
+<stop offset="0.35" stop-color="#A347FF" stop-opacity="0.9"/>
+<stop offset="0.4" stop-color="#A64DFF" stop-opacity="0.89"/>
+<stop offset="0.45" stop-color="#AB57FF" stop-opacity="0.88"/>
+<stop offset="0.5" stop-color="#8E6BFF" stop-opacity="0.87"/>
+<stop offset="0.5499" stop-color="#5B7AFF" stop-opacity="0.87"/>
+<stop offset="0.55" stop-color="#4281FF" stop-opacity="0.88"/>
+<stop offset="0.6" stop-color="#387AFF" stop-opacity="0.89"/>
+<stop offset="0.65" stop-color="#3377FF" stop-opacity="0.9"/>
+<stop offset="0.7" stop-color="#2E74FF" stop-opacity="0.92"/>
+<stop offset="0.75" stop-color="#2970FF" stop-opacity="0.94"/>
+<stop offset="0.8" stop-color="#1F69FF" stop-opacity="0.96"/>
+<stop offset="0.85" stop-color="#0A5CFF" stop-opacity="0.98"/>
+<stop offset="0.9" stop-color="#0052F5"/>
+<stop offset="0.95" stop-color="#004DE6"/>
+<stop offset="1" stop-color="#004BE0"/>
+</linearGradient>
+</defs>
+</svg>

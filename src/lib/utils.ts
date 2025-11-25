@@ -6,15 +6,11 @@ export const METADATA = {
   iconImageUrl: '/1024x1024.png',
   splashImageUrl: '/200x200.png',
   splashBackgroundColor: '#0C0C0D',
-  homeUrl: process.env.NEXT_PUBLIC_URL ?? 'https://live-hope-955.app.ohara.ai',
-  webhookUrl: 'https://live-hope-955.app.ohara.ai/api/webhook',
-  subtitle: 'Retro Gamers Nostalgia',
+  homeUrl: process.env.NEXT_PUBLIC_URL ?? '',
+  webhookUrl: process.env.NEXT_PUBLIC_WEBHOOK_URL ?? '',
+  subtitle: 'Retro Nostalgia',
   description: 'Experience Retro Pong Themed Gaming Farcaster Style',
-  screenshotUrls: [
-    '/screen1.png',
-    '/screen2.png',
-    '/screen3.png',
-  ],
+  screenshotUrls: ['/screen1.png', '/screen2.png', '/screen3.png'],
   bannerImageUrl: '/1200x630.png',
 };
 

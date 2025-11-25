@@ -25,6 +25,10 @@ export function GetChainsAction() {
     }
   }, []);
 
+  const handleClick = useCallback((): void => {
+    void handleGetChains();
+  }, [handleGetChains]);
+
   return (
     <div className="mb-4">
       <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
@@ -32,7 +36,7 @@ export function GetChainsAction() {
           sdk.getChains
         </pre>
       </div>
-      <Button onClick={handleGetChains} disabled={loading}>
+      <Button onClick={handleClick} disabled={loading}>
         Get Chains
       </Button>
       {error && !loading && (
