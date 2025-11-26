@@ -19,7 +19,7 @@ export function Providers({ children }: { children: ReactNode }) {
     <ThemeProvider attribute="class" defaultTheme="new-york" enableSystem disableTransitionOnChange>
       <WagmiProvider>
         <FrameProvider>
-          <ErudaProvider />
+          {process.env.NEXT_PUBLIC_ENABLE_ERUDA === 'true' && <ErudaProvider />}
           {children}
         </FrameProvider>
       </WagmiProvider>
