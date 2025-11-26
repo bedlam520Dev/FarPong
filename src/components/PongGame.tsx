@@ -237,17 +237,17 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
       if (playerScore >= 90) {
         aiDifficultyMultiplier = 1.0;
       } else if (playerScore >= 75) {
-        aiDifficultyMultiplier = 0.95;
-      } else if (playerScore >= 60) {
         aiDifficultyMultiplier = 0.85;
-      } else if (playerScore >= 45) {
+      } else if (playerScore >= 60) {
         aiDifficultyMultiplier = 0.75;
-      } else if (playerScore >= 30) {
+      } else if (playerScore >= 45) {
         aiDifficultyMultiplier = 0.65;
-      } else if (playerScore >= 15) {
+      } else if (playerScore >= 30) {
         aiDifficultyMultiplier = 0.55;
-      } else {
+      } else if (playerScore >= 15) {
         aiDifficultyMultiplier = 0.45;
+      } else {
+        aiDifficultyMultiplier = 0.35;
       }
 
       const ballCenterY = newState.ball.y;
@@ -573,7 +573,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
       if (winner) {
         ctx.fillStyle = 'oklch(0 0 0 / 0.90)';
         ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        ctx.font = 'bold 72px Press Start 2P';
+        ctx.font = 'bold 48px Press Start 2P';
         const winnerIsPlayer =
           (winner === 'left' && playerSide === 'left') ||
           (winner === 'right' && playerSide === 'right');

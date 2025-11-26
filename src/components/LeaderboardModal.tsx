@@ -30,8 +30,13 @@ export function LeaderboardModal({ open, onClose, currentUserFid }: LeaderboardM
 
     fetch('/api/leaderboard?limit=10', { signal: controller.signal })
       .then(async (res) => {
-        if (!res.ok) throw new Error('Failed to load leaderboard');
-        const json = (await res.json()) as { entries: LeaderboardEntry[] };
+        // Always parse the JSON response, even on error, so we can surface
+        // server-provided error messages to the UI.
+        const json = (await res.json()) as { entries?: LeaderboardEntry[]; error?: string };
+        if (!res.ok) {
+          // Throw with the error returned by the server if available.
+          throw new Error(json?.error || 'Failed to load leaderboard');
+        }
         setEntries(json.entries ?? []);
       })
       .catch((err: unknown) => {
@@ -39,7 +44,8 @@ export function LeaderboardModal({ open, onClose, currentUserFid }: LeaderboardM
         if (err instanceof DOMException && err.name === 'AbortError') {
           return;
         }
-        setError('Unable to load leaderboard.');
+        // Propagate any specific error message to the UI so users see what went wrong.
+        setError(err instanceof Error ? err.message : 'Unable to load leaderboard.');
       })
       .finally(() => {
         if (!cancelled) {
