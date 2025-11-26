@@ -4,7 +4,7 @@ import Image from 'next/image';
 import type { MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent } from 'react';
 import { JSX, useCallback, useEffect, useRef, useState } from 'react';
 
-import { GradientActionButton, GradientSmallButton } from '~/components/ui/brand-guideline-buttons';
+import { GradientSmallButton } from '~/components/ui/brand-guideline-buttons';
 import type { GameState, TouchControl, User } from '~/types/game';
 import { GameAudio } from '~/utils/audio';
 import { ControlsDisplay } from './ControlsDisplay';
@@ -885,7 +885,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
       {gameState.winner ? (
         <div className="relative flex w-full max-w-xs flex-col mt-3 mb-2 items-center gap-3 text-center font-arcade">
           {user && user.fid > 0 && (
-            <GradientActionButton
+            <GradientSmallButton
               label={scoreSubmitted ? 'Score Saved' : scoreSubmitting ? 'Saving…' : 'Submit Score'}
               icon="plus"
               onClick={() => {
@@ -894,7 +894,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
               disabled={scoreSubmitting || scoreSubmitted}
             />
           )}
-          <GradientActionButton
+          <GradientSmallButton
             label="View Leaderboard"
             icon="menu"
             onClick={() => setShowLeaderboard(true)}
