@@ -895,7 +895,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
             />
           )}
           <GradientSmallButton
-            label="View Leaderboard"
+            label="View Leaders"
             icon="menu"
             onClick={() => setShowLeaderboard(true)}
           />
