@@ -794,7 +794,7 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
   ]);
 
   return (
-    <div className="relative flex min-h-dvh w-full flex-col items-center overflow-auto bg-linear-to-br from-black via-gray-900 to-black px-4 pb-2 pt-4">
+    <div className="relative flex min-h-dvh w-full flex-col items-center overflow-auto bg-linear-to-br from-black via-gray-900 to-black px-4 pb-4 pt-4">
       <div className="relative text-center">
         <h1 className="relative font-arcade text-center bg-linear-to-r from-gradient-brand-start via-gradient-brand-mid to-gradient-brand-end bg-clip-text text-[clamp(1rem,3vw,2rem)] font-bold text-transparent">
           FARPONG
@@ -856,10 +856,6 @@ export function PongGame({ user, onReturnToMenu }: PongGameProps): JSX.Element {
               </div>
               <Image src="/base-square.svg" alt="Base score" width={30} height={30} />
             </div>
-          </div>
-
-          <div className="relative mx-auto max-w-full px-2 text-center font-arcade text-[0.4rem] leading-none uppercase tracking-[0.12em] text-white/50">
-            Survive to 100 · AI wins at 10
           </div>
 
           <div
